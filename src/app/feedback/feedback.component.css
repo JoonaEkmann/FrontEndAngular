@@ -1,4 +1,4 @@
-.hello {
+.feedback {
     background-color: #7c7c7d;
     margin: auto;
     width: 500px;
@@ -8,11 +8,10 @@
     border-style: double;
     margin-top: 100px;
     padding-top: 20px;
-    padding-bottom: 20px;
+padding-bottom: 20px;
+    
 
-
-    background-color: #7c7c7d;
-    ;
+    background-color: #7c7c7d;;
     background-image: repeating-linear-gradient(10deg,
             transparent,
             transparent 20px,

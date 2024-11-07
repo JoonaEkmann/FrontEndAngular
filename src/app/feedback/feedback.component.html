@@ -1,0 +1,10 @@
+<h1>Anna palautetta</h1>
+<div class="feedback">
+    <div *ngFor="let palautetta of questions">
+        <h4>{{ palautetta.palautteet }}</h4>
+        <mat-slider min="1" max="5" step="0.5">
+            <input matSliderThumb (input)="onInputChange($event, palautetta)">
+        </mat-slider>
+        <p>{{ palautetta.vastaus }}</p>
+    </div>
+</div>

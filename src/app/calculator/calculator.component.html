@@ -1,0 +1,14 @@
+
+<h1 class="otsikko">Laskin</h1>
+<div class="calculator">
+    <mat-grid-list cols="4" rowHeight="1:1">
+        <input type="text" class="displayResult" value={{display}} readonly /> 
+    <mat-grid-tile *ngFor="let button of buttons">
+        <button class ="button" mat-raised-button (click)="addValue(button)">{{button}}</button>
+       </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
+
+  
