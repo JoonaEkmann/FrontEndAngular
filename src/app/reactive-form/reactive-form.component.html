@@ -1,0 +1,86 @@
+<h1>Reactive Forms</h1>
+<div class="forms">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+     <!--First name-->
+    <mat-form-field>
+      <input matInput placeholder="First name" formControlName="firstName">
+      <mat-error *ngIf="profileForm.get('firstName')?.hasError('required')">
+        Enter your first name</mat-error>
+      <mat-error *ngIf="profileForm.get('firstName')?.hasError('minlength')">
+        Minimum 2 characters required</mat-error>
+      <mat-error *ngIf="profileForm.get('firstName')?.hasError('pattern')">
+        Must be valid name (letters only)</mat-error>
+    </mat-form-field>
+    <p></p>
+     <!--Last name-->
+    <mat-form-field>
+      <input matInput placeholder="Last name" formControlName="lastName">
+      <mat-error *ngIf="profileForm.get('lastName')?.hasError('required')">
+        Enter your last name</mat-error>
+      <mat-error *ngIf="profileForm.get('lastName')?.hasError('minlength')">
+        Minimum 2 characters required</mat-error>
+      <mat-error *ngIf="profileForm.get('lastName')?.hasError('pattern')">
+        Must be valid name (letters only)</mat-error>
+    </mat-form-field>
+    <p></p>
+     <!--Person id-->
+    <mat-form-field>
+      <input matInput placeholder="Person ID" formControlName="personID">
+      <mat-error *ngIf="profileForm.get('personID')?.hasError('required')">
+        Enter your ID</mat-error>
+      <mat-error *ngIf="profileForm.get('personID')?.hasError('pattern')">
+        Must be a valid ID</mat-error>
+    </mat-form-field>
+    <p></p>
+     <!--Email-->
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="profileForm.get('email')?.hasError('required')">
+        Email is required</mat-error>
+      <mat-error *ngIf="profileForm.get('email')?.hasError('email')">
+        Please enter a valid email address</mat-error>
+    </mat-form-field>
+    <p></p>
+     <!--Username-->
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="userName">
+      <mat-error *ngIf="profileForm.get('userName')?.hasError('required')">
+        Enter your username</mat-error>
+      <mat-error *ngIf="profileForm.get('userName')?.hasError('minlength')">
+        Minimum 6 characters required</mat-error>
+    </mat-form-field>
+    <p></p>
+     <!--Password-->
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password1" type="password">
+      <mat-error *ngIf="profileForm.get('password1')?.hasError('required')">
+        Enter your password</mat-error>
+      <mat-error *ngIf="profileForm.get('password1')?.hasError('minlength')">
+        Minimum 10 characters required</mat-error>
+      <mat-error *ngIf="profileForm.get('password1')?.hasError('pattern')">
+        Must include numbers and uppercase letters</mat-error>
+    </mat-form-field>
+    <p></p>
+     <!--Confirm password-->
+    <mat-form-field>
+      <input matInput placeholder="Confirm password" formControlName="password2" type="password">
+      <mat-error *ngIf="profileForm.get('password2')?.hasError('required')">
+        Confirm your password</mat-error>
+      <mat-error *ngIf="profileForm.hasError('passwordMismatch')">
+        Passwords must match</mat-error>
+    </mat-form-field>
+    <p></p>
+     <!--Checkbox-->
+    <div>
+      <input type="checkbox" formControlName="checkbox"> 
+      <label> Accept terms and conditions</label>
+      <mat-error *ngIf="profileForm.get('checkbox')?.hasError('required')">
+        Please confirm checkbox</mat-error>
+    </div>
+    <p></p>
+     <!--Submit-->
+    <button mat-flat-button color="primary" type="submit" [disabled]="profileForm.invalid">
+      Submit
+    </button>
+  </form>
+</div>

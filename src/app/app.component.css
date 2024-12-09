@@ -1,5 +1,6 @@
 .container {
   text-align: center;
+  margin-top: 20px;
 }
 
 .otsikko{
@@ -10,6 +11,15 @@
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+.toolbar{
+  background-color: rgba(141, 162, 255, 0.57);
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10px;
+  border-color: white;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
 body  {
@@ -54,4 +64,8 @@ to {background-position: -100px 0px;background-size:2750px;}
   left: 0;
   background: rgba(75, 75, 250, 0.3);
   border-radius: 3px;
+}
+
+.button-login{
+  margin-left: auto;
 }

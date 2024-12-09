@@ -1,0 +1,22 @@
+<h1>Finnkino News</h1>
+<div class="finnkino-list">
+  <input
+  class ="haku"
+  matInput
+  placeholder="Kirjoita hakusana"
+  [(ngModel)]="searchTerm"
+  name="searchTerm"
+  style="margin-bottom: 20px; display: block; width: 100%; max-width: 400px;"
+/>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let news of cinemaData$ | async | appFilter: searchTerm">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ news.PublishDate | date: 'd.M.yyyy' }} - {{ news.Title }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <img *ngIf="news.ImageURL" [src]="news.ImageURL" alt="{{ news.Title }}" style="max-width: 100%; height: auto; margin-top: 10px;">
+  </mat-expansion-panel>
+</mat-accordion>
+</div>

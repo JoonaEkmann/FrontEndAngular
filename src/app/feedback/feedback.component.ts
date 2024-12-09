@@ -13,20 +13,20 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
   ],
   templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.css'] 
+  styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent {
   questions: Palaute[] = [
-    new Palaute('Kysymys 1', 'ei arvioitu'), 
-    new Palaute('Kysymys 2', 'Huono'),
-    new Palaute('Kysymys 3', 'Ok')
+    new Palaute('Kysymys 1', 'ei arvioitu'),
+    new Palaute('Kysymys 2', 'ei arvioitu'),
+    new Palaute('Kysymys 3', 'ei arvioitu')
   ];
 
   ratings: number[] = [1.5, 1.5, 1.5];
 
   onInputChange(event: any, p: Palaute) {
-    const sliderValue = event.value; 
-    p.vastaus = this.getAnswer(event.target.value); 
+    const sliderValue = event.value;
+    p.vastaus = this.getAnswer(event.target.value);
   }
 
   getAnswer(value: number): string {
@@ -40,8 +40,6 @@ export class FeedbackComponent {
       return 'Erinomainen';
     }
   }
-  
-  
 }
 
 

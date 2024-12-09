@@ -1,6 +1,43 @@
 <body>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+
+  <mat-toolbar class="toolbar">
+    <button mat-button [matMenuTriggerFor]="menu">
+   <mat-icon> menu </mat-icon>
+    </button>
+    Front-end työkalut
+    
+   <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/hello" routerLinkActive="active">
+    Hello </button>
+    <button mat-menu-item routerLink="/calculator" routerLinkActive="active">
+      Calculator </button>
+      <button mat-menu-item routerLink="/feedback" routerLinkActive="active">
+        Feedback </button>
+        <button mat-menu-item routerLink="/forms" routerLinkActive="active">
+          Forms </button>
+          <button mat-menu-item routerLink="/reactive-forms" routerLinkActive="active">
+            Reactive forms </button>
+            <button mat-menu-item routerLink="/finnkino-list" routerLinkActive="active">
+              Finnkino </button>
+            <button mat-menu-item routerLink="/login" routerLinkActive="active">
+              Admin view </button>
+    </mat-menu>
+
+    <div class="button-login">
+      <!-- Kirjautumispainikkeet käyttäjän tilan mukaan -->
+      <a routerLink="/login" *ngIf="!(userEmail$ | async)" routerLinkActive="active">
+        <button mat-flat-button color="primary">Log In</button>
+      </a>
+      <div *ngIf="userEmail$ | async as userEmail">
+        <span>{{ userEmail }} </span>
+        <button mat-flat-button color="warn" (click)="logout()">Log Out</button>
+      </div>
+    </div>
+  </mat-toolbar>
+  
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+
 
 </body>
