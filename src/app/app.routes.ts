@@ -9,6 +9,7 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { FinnkinoListComponent } from './finnkino-list/finnkino-list.component';
 import { AuthGuard } from './guards/auth.guard';
+import { TicketSaleComponent } from './ticket-sale/ticket-sale.component';
 
 
 export const routes: Routes = [
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'finnkino-list', component: FinnkinoListComponent },
     { path: 'admin/main', component: AdminViewComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
+    { path: 'ticket-sale', component: TicketSaleComponent},
 
 
     //Pidä tämä aina viimeisenä

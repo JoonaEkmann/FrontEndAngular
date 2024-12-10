@@ -1,0 +1,61 @@
+<h1>Lippujen myynti (tentti)</h1>
+<div class="ticket-sale">
+    <form (ngSubmit)="onSubmit(forms1)" #forms1="ngForm">
+        <h5>Maatalousnäyttelyn 2025 liput nyt myynnissä</h5>
+
+        <div class="liput">
+            Peruslippu (15€)
+            <button mat-raised-button (click)="minusValue('display1')">-</button>
+            <input type="text" class="displayResult1" value="{{ display1 }}/kpl" readonly>
+            <button mat-raised-button (click)="plusValue('display1')">+</button>
+            <p></p>
+            
+            Opiskelija (10€)
+            <button mat-raised-button (click)="minusValue('display2')">-</button>
+            <input type="text" class="displayResult2" value="{{ display2 }}/kpl" readonly>
+            <button mat-raised-button (click)="plusValue('display2')">+</button>
+            <p></p>
+
+            Eläkeläinen (8€)
+            <button mat-raised-button (click)="minusValue('display3')">-</button>
+            <input type="text" class="displayResult3" value="{{ display3 }}/kpl" readonly>
+            <button mat-raised-button (click)="plusValue('display3')">+</button>
+            <p></p>
+        </div>
+
+        <input type="checkbox" formControlName="checkbox"[(ngModel)]="isDiscounted">
+        MTK:n jäsen 
+  
+        <mat-form-field>
+            <input matInput [value]="calculateTotal() + '€'" readonly />
+        </mat-form-field>
+
+        <p>Täytä tilaajan tiedot</p>
+        <mat-form-field>
+            <input matInput placeholder="First name" name="firstName" [(ngModel)]="person.firstName" #fname="ngModel"
+                required minlength="2" pattern="^[a-öA-Ö]*$">
+            <mat-error *ngIf="fname.hasError('required')">Enter your first name</mat-error>
+            <mat-error *ngIf="fname.hasError('minlength')">Minimum 2 characters required</mat-error>
+            <mat-error *ngIf="fname.hasError('pattern')">Must be valid name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Last name" name="lastName" [(ngModel)]="person.lastName" #lname="ngModel"
+                required minlength="2" pattern="^[a-öA-Ö]*$">
+            <mat-error *ngIf="lname.hasError('required')">Enter your last name</mat-error>
+            <mat-error *ngIf="lname.hasError('minlength')">Minimum 2 characters required</mat-error>
+            <mat-error *ngIf="lname.hasError('pattern')">Must be valid last name</mat-error>
+        </mat-form-field>
+
+        <p>Liput lähetetään sähköpostiosoitteeseen</p>
+        <mat-form-field>
+            <input matInput placeholder="Email" name="email" [(ngModel)]="person.email" #Ename="ngModel" required email>
+            <mat-error *ngIf="Ename.hasError('email') && !Ename.hasError('required')">Please enter a valid email
+                address</mat-error>
+            <mat-error *ngIf="Ename.hasError('required')">Email is required</mat-error>
+        </mat-form-field>
+        <p></p>
+
+        <button mat-flat-button color="primary" type="submit" [disabled]="forms1.invalid">OSTA LIPUT</button>
+    </form>
+</div>
