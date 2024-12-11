@@ -26,7 +26,6 @@
     </mat-menu>
 
     <div class="button-login">
-      <!-- Kirjautumispainikkeet käyttäjän tilan mukaan -->
       <a routerLink="/login" *ngIf="!(userEmail$ | async)" routerLinkActive="active">
         <button mat-flat-button color="primary">Log In</button>
       </a>
@@ -35,6 +34,7 @@
         <button mat-flat-button color="warn" (click)="logout()">Log Out</button>
       </div>
     </div>
+    
   </mat-toolbar>
   
   <div class="container">

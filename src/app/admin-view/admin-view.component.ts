@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service'; 
 
 @Component({
   selector: 'app-admin-view',
   templateUrl: './admin-view.component.html',
-  styleUrls: ['./admin-view.component.css']
+  styleUrls: ['./admin-view.component.css'],
 })
-export class AdminViewComponent {
 
-  constructor(private router: Router) {}
+export class AdminViewComponent {
+  constructor(private authService: AuthService) {}
 
   logout() {
-    this.router.navigate(['login']);
+    this.authService.logout();
   }
 }

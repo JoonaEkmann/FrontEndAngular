@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
-import { AuthService } from './services/auth.service'; // Oikea polku riippuu tiedoston sijainnista
+import { AuthService } from './services/auth.service'; 
 import { Observable } from 'rxjs';
 
 @Component({
@@ -38,6 +38,6 @@ export class AppComponent {
   }
 
   logout() {
-    this.authService.logout().catch(err => console.error('Logout failed:', err));
+    this.authService.logout();
   }
 }

@@ -20,8 +20,8 @@ export const routes: Routes = [
     { path: 'forms', component: FormsComponent },
     { path: 'reactive-forms', component: ReactiveFormComponent },
     { path: 'finnkino-list', component: FinnkinoListComponent },
-    { path: 'admin/main', component: AdminViewComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent },
+    { path: 'admin/main', component: AdminViewComponent },
+    { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
     { path: 'ticket-sale', component: TicketSaleComponent},
 
 

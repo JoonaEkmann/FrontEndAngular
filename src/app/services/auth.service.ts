@@ -12,7 +12,6 @@ export class AuthService {
   private userEmail = new BehaviorSubject<string | null>(null);
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
-    // Seuraa käyttäjän tilaa
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userEmail.next(user.email);
@@ -23,11 +22,15 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.afAuth.signInWithEmailAndPassword(email, password);
+    return this.afAuth.signInWithEmailAndPassword(email, password).then(() => {
+      this.router.navigate(['/admin/main']); 
+    });
   }
 
   logout() {
-    return this.afAuth.signOut().then(() => this.router.navigate(['/hello']));
+    return this.afAuth.signOut().then(() => {
+      this.router.navigate(['/hello']);
+    });
   }
 
   getUser(): Observable<firebase.User | null> {

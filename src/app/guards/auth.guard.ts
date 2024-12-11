@@ -8,20 +8,16 @@ import { map, take, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
+  canActivate(): Observable<boolean> {
     return this.authService.isAuthenticated().pipe(
-      take(1),
-      map(isAuthenticated => {
-        if (!isAuthenticated) {
-          this.router.navigate(['/']);
-          return false;
+      map(isLoggedIn => {
+        if (isLoggedIn) {
+          this.router.navigate(['/admin/main']);
+          return false; 
         }
-        return true;
+        return true; 
       })
     );
   }

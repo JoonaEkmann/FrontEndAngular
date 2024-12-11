@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service'
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -22,12 +22,20 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {
+    this.authService.isAuthenticated().subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['/admin/main']); 
+      }
+    });
+  }
 
   login(email: string, password: string) {
     this.authService.login(email, password).then(() => {
